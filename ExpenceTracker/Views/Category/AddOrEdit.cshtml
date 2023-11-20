@@ -1,0 +1,48 @@
+﻿@model ExpenceTracker.Models.Category
+
+@{
+    ViewData["PageTitle"] =Model.CategoryId == 0? "Создать новую категорию":"Редактировать категорию";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color:#211236">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+                <div class="mb-3">
+                    <div class='e-btn-group custom-rbt-group'>
+                        <input type="radio" id="radioleft" name="Type" value="Расход" checked="@(Model.Type =="Расход")" />
+                        <label class="e-btn" for="radioleft">Расход</label>
+                        <input type="radio" id="radiomiddle" name="Type" value="Доход" checked="@(Model.Type =="Доход")" />
+                        <label class="e-btn" for="radiomiddle">Доход</label>
+
+                    </div>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <ejs-textbox id="title" placeholder="Название" ejs-for="Title" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Title" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="icon" placeholder="Иконка" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Icon" class="text-danger fs-6"></span>
+                </div>
+
+                <ejs-button id="submit" type="Подтвердить" cssClass="e-success" content="Подтвердить"></ejs-button>
+            </form>
+        </div>
+        </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#211250">
+            <i class="fa-solid fa-shapes fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+@*
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@

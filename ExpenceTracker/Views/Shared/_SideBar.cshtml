@@ -1,0 +1,82 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<Object> menuItems = new List<Object>();
+    menuItems.Add(new
+    {
+        text = "Основное",
+        separator=true,
+    });
+    menuItems.Add(new
+    {
+        text = "Дашборд",
+        iconCss = "fa-solid fa-home",
+        url = "/",
+    });
+    menuItems.Add(new
+    {
+        text = "Категории",
+        iconCss="fa-solid fa-folder-closed",
+        url = "/Category",
+    });
+    menuItems.Add(new
+    {
+        text = "Транзакции",
+        iconCss="fa-solid fa-arrow-right-arrow-left",
+        url = "/Transaction"
+    });
+    menuItems.Add(new
+    {
+        text = "Дополнительно",
+        separator = true,
+    });
+    menuItems.Add(new
+    {
+        text = "Отчет",
+        iconCss = "fa-solid fa-chart-simple",
+        url = "/#"
+    });
+    menuItems.Add(new
+    {
+        text = "Настройки",
+        iconCss = "fa-solid fa-gear",
+        url = "/#"
+    });
+}
+
+
+<ejs-sidebar id="sidebar" width="290px" enableDock dockSize="100px">
+    <e-content-template>
+        <div class="logo-wrapper">
+            <div class="app-logo">
+                <img class="profile-pic" src="1-1.jpg" />
+            </div>
+            <div class="w-100"></div>
+           @* <i id="sidebar-toggler" class="fa-solid fa-angles-left"></i>*@
+        </div>
+        
+        <div class="profile-wrapper">
+            <img class="profile-pic" src="economic.png" />
+            <div class="titles d-flex flex-column ps-3">
+                <h6 class="mb-0">Денежный помощник</h6>
+                <span class="text-muted">лоу скилл</span>
+            </div>
+        </div>
+
+        <ejs-menu id="menu" 
+        items="menuItems" 
+        orientation="Vertical"></ejs-menu>
+    </e-content-template>
+</ejs-sidebar>
+
+
+@*для кнопки чтобы разворачивать и сварачивать панель
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        dockBar=document.getElementById('sidebar').ej2_instances[0];
+        document.getElementById('sidebar-toggler').onclick = function(){
+            dockBar.toggle();
+        }
+    })
+</script>*@
